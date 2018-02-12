@@ -1,0 +1,27 @@
+{
+  "name": "specifications-maker",
+  "version": "0.0.1",
+  "description": "Web based tool for creating a specifications document easily",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lethenju/specificationsMaker.git"
+  },
+  "keywords": [
+    "specifications",
+    "maker",
+    "react",
+    "flask",
+    "python",
+    "js"
+  ],
+  "author": "Julien LE THENO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lethenju/specificationsMaker/issues"
+  },
+  "homepage": "https://github.com/lethenju/specificationsMaker#readme"
+}
