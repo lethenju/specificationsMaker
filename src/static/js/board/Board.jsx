@@ -17,7 +17,7 @@ export default class Board extends React.Component {
     this.props.showOnEditingArea(info);
   }
   update(info) {
-    if (info.type == "actor") {
+    if (info.type == "Actors") {
       this.actorBoard.rename(info.index, info.object.name);
     } else {
       this.UCBoard.rename(info.index, info.object.name);

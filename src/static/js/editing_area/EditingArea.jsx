@@ -51,23 +51,22 @@ export default class EditingArea extends React.Component {
           </Editable>
         </row>
         <div className="divider" />
-        <div class="section">
-          <h5>Properties</h5>
-          <table className="propertyTable highlight">
-            <tbody>
-              <tr>
-                <td>Direct actor ?</td>
-                <td>TODO</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td>TODO</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="switch">
+          <p> Actor's type :</p>
+          <label>
+            Indirect
+            <input type="checkbox" />
+            <span class="lever" />
+            Direct
+          </label>
+        </div>
+        <p> Description :</p>
+        <div className="row">
+          <textarea className="col s12" name="textarea">
+            {this.state.object.description}
+          </textarea>
         </div>
       </div>;
-       
   }
   renderUC() {
     return (
