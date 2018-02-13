@@ -11,7 +11,12 @@ export default class UCBoard extends React.Component {
     this.renameUseCase = this.renameUseCase.bind(this);
     this.eachUseCase = this.eachUseCase.bind(this);
   }
-
+  componentDidMount() {
+    this.props.onRef(this);
+  }
+  componentWillUnmount() {
+    this.props.onRef(undefined);
+  }
   addUseCase() {
     let newUCs = this.state.UCs;
     newUCs.push("New Use Case");
@@ -24,7 +29,7 @@ export default class UCBoard extends React.Component {
     this.setState({ UCs: newUCs });
   }
 
-  renameUseCase( i, newText) {
+  renameUseCase(i, newText) {
     let newUCs = this.state.UCs;
     newUCs[i] = newText;
     this.setState({ UCs: newUCs });

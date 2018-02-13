@@ -43,7 +43,7 @@ export default class Editable extends React.Component {
     return <h3 onClick={this.edit}>{this.props.children}</h3>;
   }
   renderForm() {
-    return <div class="input-field col s6" ref={this.setWrapperRef}>
+    return <div class="input-field col s9" ref={this.setWrapperRef}>
         <input defaultValue={this.props.children} 
         id="editable" ref="newText" type="text" 
         class="validate" onKeyPress={this._handleKeyPress} />

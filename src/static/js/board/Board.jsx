@@ -21,15 +21,21 @@ export default class Board extends React.Component {
     if (info.type == "actor") {
       this.actorBoard.renameActor(info.index, info.object.name);
     } else {
-      alert("UC");
+      this.UCBoard.renameUseCase(info.index, info.object.name);
     }
   }
   render() {
     return (
       <div className="Board card-panel">
         <h2> Board</h2>
-        <ActorsBoard showOnEditingArea={this.focusOnEditingArea} onRef={ref => this.actorBoard = ref} />
-        <UCBoard showOnEditingArea={this.focusOnEditingArea} />{" "}
+        <ActorsBoard
+          showOnEditingArea={this.focusOnEditingArea}
+          onRef={ref => (this.actorBoard = ref)}
+        />
+        <UCBoard
+          showOnEditingArea={this.focusOnEditingArea}
+          onRef={ref => (this.UCBoard = ref)}
+        />{" "}
       </div>
     );
   }
