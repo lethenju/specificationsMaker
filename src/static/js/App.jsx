@@ -1,3 +1,9 @@
+/** @file App.jsx
+ *  @author Julien LE THENO
+ *  @desc Index of the React application. Handles the biggest components on screen : 
+ * the board and the editing area, and the communication between them.
+ */
+
 import React from "react";
 import Board from "./board/Board";
 import EditingArea from "./editing_area/EditingArea";
