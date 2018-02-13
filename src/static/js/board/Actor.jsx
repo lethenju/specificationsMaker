@@ -24,8 +24,7 @@ export default class Actor extends React.Component {
     this.props.removeAC(this.props.index);
   }
   renderNormal() {
-    return (
-      <div className="ActorNormal">
+    return <div className="ActorNormal card-panel blue lighten-3" onClick={this.props.showOnEditingArea}>
         <h3>{this.props.children}</h3>
         <button onClick={this.edit} className="button-primary">
           Edit
@@ -33,18 +32,15 @@ export default class Actor extends React.Component {
         <button onClick={this.remove} className="button-danger">
           Remove
         </button>
-      </div>
-    );
+      </div>;
   }
   renderForm() {
-    return (
-      <div className="ActorForm">
+    return <div className="ActorForm card-panel blue lighten-3">
         <textarea ref="newText" defaultValue={this.props.children} />
         <button onClick={this.save} className="button-primary">
           Save
         </button>
-      </div>
-    );
+      </div>;
   }
   render() {
     if (this.state.editing) {

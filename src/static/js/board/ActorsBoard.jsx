@@ -4,7 +4,7 @@ import Actor from "./Actor";
 export default class ActorsBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {actors: ['My first actor']};
+    this.state = { actors: ["My first actor"] };
     this.removeActor = this.removeActor.bind(this);
     this.renameActor = this.renameActor.bind(this);
     this.addActor = this.addActor.bind(this);
@@ -36,6 +36,7 @@ export default class ActorsBoard extends React.Component {
         index={i}
         renameAC={this.renameActor}
         removeAC={this.removeActor}
+        showOnEditingArea={this.props.showOnEditingArea}
       >
         {text}
       </Actor>
@@ -43,12 +44,12 @@ export default class ActorsBoard extends React.Component {
   }
 
   render() {
-    return <div className="ActorsBoard">
+    return (
+      <div className="ActorsBoard card-panel blue lighten-4">
         <h2> Actors </h2>
-        <div className="Actor">
-          {this.state.actors.map(this.eachActor)}
-        </div>
+        <div>{this.state.actors.map(this.eachActor)}</div>
         <button onClick={this.addActor}>Add new</button>
-      </div>;
+      </div>
+    );
   }
 }

@@ -42,12 +42,12 @@ export default class UCBoard extends React.Component {
   }
 
   render() {
-    return <div className="UCboard card-panel teal lighten-1">
+    return (
+      <div className="UCboard card-panel teal lighten-4">
         <h2> Use Cases </h2>
-        <div className="UseCase card-panel teal lighten-2">
-          {this.state.UCs.map(this.eachUseCase)}
-        </div>
+        <div>{this.state.UCs.map(this.eachUseCase)}</div>
         <button onClick={this.addUseCase}>Add new</button>
-      </div>;
+      </div>
+    );
   }
 }

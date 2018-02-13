@@ -24,7 +24,7 @@ export default class UseCase extends React.Component {
   }
   renderNormal() {
     return (
-      <div className="UseCaseNormal">
+      <div className="UseCaseNormal card-panel teal lighten-3">
         <h3>{this.props.children}</h3>
         <button onClick={this.edit} className="button-primary">
           Edit
@@ -37,7 +37,7 @@ export default class UseCase extends React.Component {
   }
   renderForm() {
     return (
-      <div className="UseCaseForm">
+      <div className="UseCaseForm card-panel teal lighten-3">
         <textarea ref="newText" defaultValue={this.props.children} />
         <button onClick={this.save} className="button-primary">
           Save
