@@ -3,7 +3,7 @@ import UseCase from "./UseCase";
 export default class UCBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { UCs: ['test'] };
+    this.state = { UCs: ["My first Use Case"] };
     this.addUseCase = this.addUseCase.bind(this);
     this.removeUseCase = this.removeUseCase.bind(this);
     this.renameUseCase = this.renameUseCase.bind(this);
@@ -22,7 +22,7 @@ export default class UCBoard extends React.Component {
     this.setState({ UCs: newUCs });
   }
 
-  renameUseCase(newText, i){
+  renameUseCase(newText, i) {
     let newUCs = this.state.UCs;
     newUCs[i] = newText;
     this.setState({ UCs: newUCs });
@@ -30,18 +30,24 @@ export default class UCBoard extends React.Component {
 
   eachUseCase(text, i) {
     return (
-      <UseCase key={i} index={i} renameUC={this.renameUseCase} removeUC={this.removeUseCase} >
+      <UseCase
+        key={i}
+        index={i}
+        renameUC={this.renameUseCase}
+        removeUC={this.removeUseCase}
+      >
         {text}
       </UseCase>
     );
   }
 
   render() {
-    return (
-      <div className="button-info">
-        <div className="board">{this.state.UCs.map(this.eachUseCase)}</div>
+    return <div className="UCboard card-panel teal lighten-1">
+        <h2> Use Cases </h2>
+        <div className="UseCase card-panel teal lighten-2">
+          {this.state.UCs.map(this.eachUseCase)}
+        </div>
         <button onClick={this.addUseCase}>Add new</button>
-      </div>
-    );
+      </div>;
   }
 }

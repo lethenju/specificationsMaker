@@ -1,8 +1,8 @@
  import React from "react";
- import UCBoard from "./board/UCBoard"
+ import Board from "./board/Board"
  
  export default class App extends React.Component {
      render() {
-         return <UCBoard />;
+         return <Board />;
      }
     }
