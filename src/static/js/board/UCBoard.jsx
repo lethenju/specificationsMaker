@@ -24,7 +24,7 @@ export default class UCBoard extends React.Component {
     this.setState({ UCs: newUCs });
   }
 
-  renameUseCase(newText, i) {
+  renameUseCase( i, newText) {
     let newUCs = this.state.UCs;
     newUCs[i] = newText;
     this.setState({ UCs: newUCs });

@@ -14,9 +14,8 @@ export default class Paragraph extends React.Component {
     this.setState({ editing: true });
   }
   save() {
-    const value = this.refs.newText.value;
     this.setState({ editing: false });
-    this.props.rename(value, this.props.index);
+    this.props.rename(this.props.index, this.refs.newText.value);
   }
 
   remove() {

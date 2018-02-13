@@ -8,6 +8,7 @@ export default class Editable extends React.Component {
     this.save = this.save.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this._handleKeyPress = this._handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -42,17 +43,16 @@ export default class Editable extends React.Component {
     return <h3 onClick={this.edit}>{this.props.children}</h3>;
   }
   renderForm() {
-    return (
-      <div class="input-field col s6" ref={this.setWrapperRef}>
-        <input
-          defaultValue={this.props.children}
-          id="editable"
-          ref="newText"
-          type="text"
-          class="validate"
-        />
-      </div>
-    );
+    return <div class="input-field col s6" ref={this.setWrapperRef}>
+        <input defaultValue={this.props.children} 
+        id="editable" ref="newText" type="text" 
+        class="validate" onKeyPress={this._handleKeyPress} />
+      </div>;
+  }  
+  _handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.save();
+    }
   }
 
   render() {

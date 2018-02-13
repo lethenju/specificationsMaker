@@ -6,10 +6,14 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.showOnEditingArea = this.showOnEditingArea.bind(this);
+    this.updateToBoard = this.updateToBoard.bind(this);
   }
 
   showOnEditingArea(info) {
     this.editingArea.update(info);
+  }
+  updateToBoard(info) {
+    this.specBoard.update(info);
   }
   render() {
     return (
@@ -23,10 +27,16 @@ export default class App extends React.Component {
         </nav>
         <div className="MainBoard row">
           <div className="col s4">
-            <Board showOnEditingArea={this.showOnEditingArea} />{" "}
+            <Board
+              showOnEditingArea={this.showOnEditingArea}
+              onRef={ref => (this.specBoard = ref)}
+            />
           </div>
           <div className="col s8">
-            <EditingArea onRef={ref => (this.editingArea = ref)} />
+            <EditingArea
+              updateToBoard={this.updateToBoard}
+              onRef={ref => (this.editingArea = ref)}
+            />
           </div>
         </div>
       </div>
