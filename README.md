@@ -5,7 +5,7 @@
 This web application helps developers to conceive their
 product by automating the redaction of the specification report
 
-It has been created for helping me understand react, and therefore will likely never be fully implemented.
+It has been created for helping me understanding react, and therefore will likely never be fully implemented.
 
 ## Functionnalities
 
@@ -25,4 +25,4 @@ It has been created for helping me understand react, and therefore will likely n
 | Saving document                      | 0%          |
 | Loading document                     | 0%          |
 | Load document automatically from md? | 0%          |
-| **TOTAL**                            | **0%**      |
+| **TOTAL**                            | **5%**      |
