@@ -8,5 +8,8 @@
     position: fixed;
 }
 .btn {
-    margin: 1%;
+    margin: 5px;
+}
+h3{
+    font-weight: 300;
 }

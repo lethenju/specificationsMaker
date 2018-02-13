@@ -1,10 +1,10 @@
 import React from "react";
-import Actor from "./Actor";
+import Paragraph from "./Paragraph";
 
 export default class ActorsBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { actors: ["My first actor"] };
+    this.state = { actors: [] };
     this.removeActor = this.removeActor.bind(this);
     this.renameActor = this.renameActor.bind(this);
     this.focusActor = this.focusActor.bind(this);
@@ -30,23 +30,24 @@ export default class ActorsBoard extends React.Component {
     this.setState({ actors: newActors });
   }
   focusActor(info) {
-    if (info.command != "clear"){
-        info.name = this.state.actors[info.index];
-    } 
+    if (info.command != "clear") {
+      info.name = this.state.actors[info.index];
+    }
     this.props.showOnEditingArea(info);
   }
 
   eachActor(text, i) {
     return (
-      <Actor
+      <Paragraph
         key={i}
         index={i}
-        renameAC={this.renameActor}
-        removeAC={this.removeActor}
+        type="actor"
+        rename={this.renameActor}
+        remove={this.removeActor}
         showOnEditingArea={this.focusActor}
       >
         {text}
-      </Actor>
+      </Paragraph>
     );
   }
 
@@ -55,7 +56,12 @@ export default class ActorsBoard extends React.Component {
       <div className="ActorsBoard card-panel blue lighten-4">
         <h2> Actors </h2>
         <div>{this.state.actors.map(this.eachActor)}</div>
-        <button onClick={this.addActor} className="waves-effect waves-light btn">Add new</button>
+        <button
+          onClick={this.addActor}
+          className="waves-effect waves-light btn"
+        >
+          Add new
+        </button>
       </div>
     );
   }

@@ -24,10 +24,12 @@ export default class UseCase extends React.Component {
   remove() {
     if (window.confirm("Are you sure?")) {
       this.props.removeUC(this.props.index);
+      const info = { command: "clear"};
+      this.props.showOnEditingArea(info);
     }
   }
   focus() {
-    const info = { type: "UC", index: this.props.index, name: null };
+    const info = { command: "show", type: "UC", index: this.props.index, name: null };
     this.props.showOnEditingArea(info);
   }
   renderNormal() {

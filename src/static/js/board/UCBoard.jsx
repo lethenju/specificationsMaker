@@ -1,9 +1,10 @@
 import React from "react";
-import UseCase from "./UseCase";
+import Paragraph from "./Paragraph";
+
 export default class UCBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { UCs: ["My first Use Case"] };
+    this.state = { UCs: [] };
     this.addUseCase = this.addUseCase.bind(this);
     this.removeUseCase = this.removeUseCase.bind(this);
     this.focusUseCase = this.focusUseCase.bind(this);
@@ -35,18 +36,32 @@ export default class UCBoard extends React.Component {
   }
 
   eachUseCase(text, i) {
-    return <UseCase key={i} index={i} renameUC={this.renameUseCase} removeUC={this.removeUseCase} showOnEditingArea={this.focusUseCase}>
+    return (
+      <Paragraph
+        key={i}
+        index={i}
+        type="UC"
+        rename={this.renameUseCase}
+        remove={this.removeUseCase}
+        showOnEditingArea={this.focusUseCase}
+      >
         {text}
-      </UseCase>;
+      </Paragraph>
+    );
   }
 
   render() {
-    return <div className="UCboard card-panel teal lighten-4">
+    return (
+      <div className="UCboard card-panel teal lighten-4">
         <h2> Use Cases </h2>
         <div>{this.state.UCs.map(this.eachUseCase)}</div>
-        <button onClick={this.addUseCase} className="waves-effect waves-light btn">
+        <button
+          onClick={this.addUseCase}
+          className="waves-effect waves-light btn"
+        >
           Add new
         </button>
-      </div>;
+      </div>
+    );
   }
 }
