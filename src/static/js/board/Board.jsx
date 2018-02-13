@@ -13,7 +13,7 @@ export default class Board extends React.Component {
   render() {
     return (
       <div className="Board card-panel">
-        <h2> Specification Board</h2>
+        <h2> Board</h2>
         <ActorsBoard showOnEditingArea={this.focusOnEditingArea} />{" "}
         <UCBoard showOnEditingArea={this.focusOnEditingArea} />{" "}
       </div>
