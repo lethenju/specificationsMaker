@@ -16,6 +16,13 @@ export default class Paragraph extends React.Component {
   save() {
     this.setState({ editing: false });
     this.props.rename(this.props.index, this.refs.newText.value);
+    const info = {
+      command: "show",
+      type: this.props.type,
+      index: this.props.index,
+      name: this.refs.newText.value
+    };
+    this.props.showOnEditingArea(info);
   }
 
   remove() {
@@ -114,13 +121,13 @@ export default class Paragraph extends React.Component {
   }
   render() {
     if (this.state.editing) {
-      if (this.props.type == "actor") {
+      if (this.props.type == "Actors") {
         return this.renderActorForm();
       } else {
         return this.renderUCForm();
       }
     } else {
-      if (this.props.type == "actor") {
+      if (this.props.type == "Actors") {
         return this.renderActorNormal();
       } else {
         return this.renderUCNormal();

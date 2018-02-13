@@ -1,6 +1,5 @@
 import React from "react";
-import ActorsBoard from "./ActorsBoard";
-import UCBoard from "./UCBoard";
+import ItemsBoard from "./ItemsBoard";
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -19,20 +18,22 @@ export default class Board extends React.Component {
   }
   update(info) {
     if (info.type == "actor") {
-      this.actorBoard.renameActor(info.index, info.object.name);
+      this.actorBoard.rename(info.index, info.object.name);
     } else {
-      this.UCBoard.renameUseCase(info.index, info.object.name);
+      this.UCBoard.rename(info.index, info.object.name);
     }
   }
   render() {
     return (
       <div className="Board card-panel">
         <h2> Board</h2>
-        <ActorsBoard
+        <ItemsBoard
+          type="Actors"
           showOnEditingArea={this.focusOnEditingArea}
           onRef={ref => (this.actorBoard = ref)}
         />
-        <UCBoard
+        <ItemsBoard
+          type="Use Cases"
           showOnEditingArea={this.focusOnEditingArea}
           onRef={ref => (this.UCBoard = ref)}
         />{" "}

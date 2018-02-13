@@ -90,9 +90,9 @@ export default class EditingArea extends React.Component {
   }
   render() {
     if (this.state.render) {
-      if (this.state.type == "actor") {
+      if (this.state.type == "Actors") {
         return this.renderActor();
-      } else if (this.state.type == "UC") {
+      } else if (this.state.type == "Use Cases") {
         return this.renderUC();
       }
     } else {
