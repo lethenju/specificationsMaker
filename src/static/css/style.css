@@ -1,0 +1,9 @@
+.ActorNormal .ActorForm {
+    margin-bottom: 1%;
+}
+.UseCaseNormal .UseCaseForm {
+    margin-bottom: 1%;
+}
+.EditingArea {
+    position: fixed;
+}
