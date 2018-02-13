@@ -7,9 +7,9 @@ product by automating the redaction of the specification report
 
 It has been created for helping me understanding react, and therefore will likely never be fully implemented.
 
-## Functionnalities
+## Functionalities
 
-| Functionnalities                     | Implemented |
+| Functionalities                     | Implemented |
 | ------------------------------------ | ----------- |
 | **Specification making**             | 0%          |
 | Website layout                       | 50 %        |
