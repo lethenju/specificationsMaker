@@ -7,6 +7,7 @@ export default class ActorsBoard extends React.Component {
     this.state = { actors: ["My first actor"] };
     this.removeActor = this.removeActor.bind(this);
     this.renameActor = this.renameActor.bind(this);
+    this.focusActor = this.focusActor.bind(this);
     this.addActor = this.addActor.bind(this);
     this.eachActor = this.eachActor.bind(this);
   }
@@ -28,6 +29,10 @@ export default class ActorsBoard extends React.Component {
     newActors[i] = newText;
     this.setState({ actors: newActors });
   }
+  focusActor(info) {
+    info.name = this.state.actors[info.index];
+    this.props.showOnEditingArea(info);
+  }
 
   eachActor(text, i) {
     return (
@@ -36,7 +41,7 @@ export default class ActorsBoard extends React.Component {
         index={i}
         renameAC={this.renameActor}
         removeAC={this.removeActor}
-        showOnEditingArea={this.props.showOnEditingArea}
+        showOnEditingArea={this.focusActor}
       >
         {text}
       </Actor>
@@ -48,7 +53,7 @@ export default class ActorsBoard extends React.Component {
       <div className="ActorsBoard card-panel blue lighten-4">
         <h2> Actors </h2>
         <div>{this.state.actors.map(this.eachActor)}</div>
-        <button onClick={this.addActor}>Add new</button>
+        <button onClick={this.addActor} className="waves-effect waves-light btn">Add new</button>
       </div>
     );
   }

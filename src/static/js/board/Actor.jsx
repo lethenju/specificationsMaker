@@ -6,9 +6,10 @@ export default class Actor extends React.Component {
     this.state = { editing: false };
     this.edit = this.edit.bind(this);
     this.save = this.save.bind(this);
+    this.focus = this.focus.bind(this);
     this.remove = this.remove.bind(this);
-    this.renderNormal = this.renderNormal.bind(this);
     this.renderForm = this.renderForm.bind(this);
+    this.renderNormal = this.renderNormal.bind(this);
 }
 
   edit() {
@@ -23,13 +24,21 @@ export default class Actor extends React.Component {
   remove() {
     this.props.removeAC(this.props.index);
   }
+  focus() {
+    const info = {
+        type: "actor",
+        index: this.props.index,
+        name: null
+    };
+    this.props.showOnEditingArea(info);
+  }
   renderNormal() {
-    return <div className="ActorNormal card-panel blue lighten-3" onClick={this.props.showOnEditingArea}>
+    return <div className="ActorNormal card-panel blue lighten-3" onClick={this.focus}>
         <h3>{this.props.children}</h3>
-        <button onClick={this.edit} className="button-primary">
+        <button onClick={this.edit} className="waves-effect waves-light btn">
           Edit
         </button>
-        <button onClick={this.remove} className="button-danger">
+        <button onClick={this.remove} className="waves-effect waves-light btn">
           Remove
         </button>
       </div>;
@@ -37,7 +46,7 @@ export default class Actor extends React.Component {
   renderForm() {
     return <div className="ActorForm card-panel blue lighten-3">
         <textarea ref="newText" defaultValue={this.props.children} />
-        <button onClick={this.save} className="button-primary">
+        <button onClick={this.save} className="waves-effect waves-light btn">
           Save
         </button>
       </div>;

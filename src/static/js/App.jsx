@@ -7,8 +7,9 @@
         super(props);
         this.showOnEditingArea = this.showOnEditingArea.bind(this);
      }
-     showOnEditingArea(){
-        alert("dummy");
+
+     showOnEditingArea(info){
+         this.editingArea.update(info);
      }
      render() {
          return <div className="App row">
@@ -16,7 +17,7 @@
                <Board showOnEditingArea={this.showOnEditingArea} />{" "}
              </div>
              <div className="col s8">
-               <EditingArea />
+               <EditingArea onRef={ref => (this.editingArea = ref)} />
              </div>
            </div>;
      }

@@ -6,6 +6,7 @@ export default class UCBoard extends React.Component {
     this.state = { UCs: ["My first Use Case"] };
     this.addUseCase = this.addUseCase.bind(this);
     this.removeUseCase = this.removeUseCase.bind(this);
+    this.focusUseCase = this.focusUseCase.bind(this);
     this.renameUseCase = this.renameUseCase.bind(this);
     this.eachUseCase = this.eachUseCase.bind(this);
   }
@@ -28,26 +29,24 @@ export default class UCBoard extends React.Component {
     this.setState({ UCs: newUCs });
   }
 
+  focusUseCase(info) {
+    info.name = this.state.UCs[info.index];
+    this.props.showOnEditingArea(info);
+  }
+
   eachUseCase(text, i) {
-    return (
-      <UseCase
-        key={i}
-        index={i}
-        renameUC={this.renameUseCase}
-        removeUC={this.removeUseCase}
-      >
+    return <UseCase key={i} index={i} renameUC={this.renameUseCase} removeUC={this.removeUseCase} showOnEditingArea={this.focusUseCase}>
         {text}
-      </UseCase>
-    );
+      </UseCase>;
   }
 
   render() {
-    return (
-      <div className="UCboard card-panel teal lighten-4">
+    return <div className="UCboard card-panel teal lighten-4">
         <h2> Use Cases </h2>
         <div>{this.state.UCs.map(this.eachUseCase)}</div>
-        <button onClick={this.addUseCase}>Add new</button>
-      </div>
-    );
+        <button onClick={this.addUseCase} className="waves-effect waves-light btn">
+          Add new
+        </button>
+      </div>;
   }
 }
