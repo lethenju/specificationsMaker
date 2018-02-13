@@ -22,10 +22,16 @@ export default class Actor extends React.Component {
   }
 
   remove() {
-    this.props.removeAC(this.props.index);
+    if (window.confirm("Are you sure?")){
+        this.props.removeAC(this.props.index);
+        // clearing info on editing pane
+        const info = { command: "clear" };
+        this.props.showOnEditingArea(info);
+    }
   }
   focus() {
     const info = {
+        command: "show",
         type: "actor",
         index: this.props.index,
         name: null

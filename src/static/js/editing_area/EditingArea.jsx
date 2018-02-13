@@ -4,10 +4,7 @@ export default class EditingArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      render: false,
-      type: null,
-      index: null,
-      object: null
+      render: false
     };
   }
   componentDidMount() {
@@ -17,14 +14,18 @@ export default class EditingArea extends React.Component {
     this.props.onRef(undefined);
   }
   update(info) {
-    this.setState({
-      render: true,
-      type: info.type,
-      index: info.index,
-      object: {
-        name: info.name
-      }
-    });
+    if (info.command == "show") {
+      this.setState({
+        render: true,
+        type: info.type,
+        index: info.index,
+        object: {
+          name: info.name
+        }
+      });
+    } else {
+      this.setState({ render: false});
+    }
   }
 
   renderActor() {

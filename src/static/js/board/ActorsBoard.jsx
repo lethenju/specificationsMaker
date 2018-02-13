@@ -30,7 +30,9 @@ export default class ActorsBoard extends React.Component {
     this.setState({ actors: newActors });
   }
   focusActor(info) {
-    info.name = this.state.actors[info.index];
+    if (info.command != "clear"){
+        info.name = this.state.actors[info.index];
+    } 
     this.props.showOnEditingArea(info);
   }
 
