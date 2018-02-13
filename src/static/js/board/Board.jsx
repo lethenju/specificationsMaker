@@ -29,11 +29,13 @@ export default class Board extends React.Component {
         <h2> Board</h2>
         <ItemsBoard
           type="Actors"
+          color="blue"
           showOnEditingArea={this.focusOnEditingArea}
           onRef={ref => (this.actorBoard = ref)}
         />
         <ItemsBoard
           type="Use Cases"
+          color="teal"
           showOnEditingArea={this.focusOnEditingArea}
           onRef={ref => (this.UCBoard = ref)}
         />{" "}

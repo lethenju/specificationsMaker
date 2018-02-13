@@ -19,7 +19,7 @@ export default class  extends React.Component {
   }
   add() {
     let newPar = this.state.paragraphs;
-    newPar.push("new item");
+    newPar.push("New Item");
     this.setState({ paragraphs: newPar });
   }
 
@@ -56,29 +56,13 @@ export default class  extends React.Component {
     );
   }
 
-  renderActor() {
-    return <div className="ActorsBoard card-panel blue lighten-4">
+  render(){
+    return <div className={"ActorsBoard card-panel "+this.props.color+" lighten-4"}>
         <h2> {this.props.type} </h2>
         <div>{this.state.paragraphs.map(this.each)}</div>
         <button onClick={this.add} className="waves-effect waves-light btn">
           Add new
         </button>
       </div>;
-  }
-  renderUC() {
-   return <div className="UCBoard card-panel teal lighten-4">
-       <h2> {this.props.type} </h2>
-       <div>{this.state.paragraphs.map(this.each)}</div>
-       <button onClick={this.add} className="waves-effect waves-light btn">
-         Add new
-       </button>
-     </div>;
-  }
-  render(){
-    if (this.props.type == "Actors"){
-      return this.renderActor();
-    } else {
-      return this.renderUC();
-    }
   }
 }
