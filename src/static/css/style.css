@@ -4,12 +4,20 @@
 .UseCaseNormal .UseCaseForm {
     margin-bottom: 1%;
 }
-.EditingArea {
+.EditingArea{
     position: fixed;
 }
+
 .btn {
     margin: 5px;
 }
+h1{
+    font-weight: 300;
+}
 h3{
+    font-weight: 300;
+}
+
+h2{
     font-weight: 300;
 }
