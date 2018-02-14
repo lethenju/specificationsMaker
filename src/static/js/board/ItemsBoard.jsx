@@ -60,6 +60,7 @@ export default class extends React.Component {
         type={this.props.type}
         update={this.update}
         remove={this.remove}
+        color={this.props.color}
         showOnEditingArea={this.focus}
       >
         {object.name}

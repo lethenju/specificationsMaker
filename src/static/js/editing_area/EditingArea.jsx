@@ -34,62 +34,41 @@ export default class EditingArea extends React.Component {
     this.setState(newState);
     this.props.updateToBoard(newState);
   }
-  save() {
+  save(event) {
     const newState = this.state;
     newState.object.description = this.refs.description.value;
 
     if (this.state.type === "Actors") {
-      newState.object.direct = this.refs.isDirect.value;
+      newState.object.direct = event.target.value;
     }
     this.setState(newState);
     this.props.updateToBoard(newState);
   }
 
   renderActor() {
-    console.log(this.state.object.description);
-    return (
-      <div className="EditingArea card-panel col s6">
+    return <div className="EditingArea card-panel col s6">
         <h2> Editing Area </h2>
         <div className="no_pad_margin row">
           <h3 className="no_pad_margin col s3 right-align">Actor :</h3>
-          <Editable
-            className="no_pad_margin col s8"
-            key={1}
-            index={1}
-            type="editable"
-            rename={this.renameElement}
-          >
+          <Editable className="no_pad_margin col s8" key={1} index={1} type="editable" rename={this.renameElement}>
             {this.state.object.name}
           </Editable>
         </div>
         <div className="divider" />
-        <div className="switch">
-          <p> Actor's type :</p>
+        <form>
           <label>
-            Indirect
-            <input
-              type="checkbox"
-              ref="isDirect"
-              defaultValue={this.state.object.direct}
-              onChange={this.save}
-            />
-            <span className="lever" />
-            Direct
+            Actor's type
+            <select className="browser-default" value={this.state.object.direct || "direct"} onChange={this.save}>
+              <option value="direct">Direct</option>
+              <option value="indirect">Indirect</option>
+            </select>
           </label>
-        </div>
-        <p> Description :</p>
-        <div className="row">
-          <textarea
-            className="col s12"
-            name="textarea"
-            ref="description"
-            value={this.state.object.description || ""}
-            onChange={this.save}
-          >
-          </textarea>
-        </div>
-      </div>
-    );
+          <p> Description :</p>
+          <div className="row">
+            <textarea className="col s12" name="textarea" ref="description" value={this.state.object.description || ""} onChange={this.save} />
+          </div>
+        </form>
+      </div>;
   }
   renderUC() {
     return (

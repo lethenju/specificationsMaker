@@ -8,7 +8,7 @@ export default class Editable extends React.Component {
     this.save = this.save.bind(this);
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this._handleKeyPress = this._handleKeyPress.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ export default class Editable extends React.Component {
         className="validate" onKeyPress={this._handleKeyPress} />
       </div>;
   }  
-  _handleKeyPress(e) {
+  handleKeyPress(e) {
     if (e.key === 'Enter') {
       this.save();
     }
