@@ -1,29 +1,37 @@
 .ActorNormal .ActorForm {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
 .UseCaseNormal .UseCaseForm {
-    margin-bottom: 1%;
+  margin-bottom: 1%;
 }
-.EditingArea{
-    position: fixed;
+.EditingArea {
+  position: fixed;
 }
 
 .btn {
-    margin: 5px;
+  margin: 5px;
 }
-h1{
-    font-weight: 300;
+h1 {
+  font-weight: 300;
 }
-h3{
-    font-weight: 300;
+h3 {
+  font-weight: 300;
 }
 
-h2{
-    font-weight: 300;
+h2 {
+  font-weight: 300;
 }
 
 .no_pad_margin {
-    padding: 0px;
-    margin : 0px;
+  padding: 0px;
+  margin: 0px;
 }
-textarea { resize: vertical; }
+select {
+  font-size: 18px;
+  color: black;
+}
+textarea {
+  height: 200px;
+  resize: vertical;
+  font-size: 18px;
+}

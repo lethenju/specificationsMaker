@@ -48,7 +48,7 @@ export default class Paragraph extends React.Component {
     return (
       <div
         className={
-          "ParagraphNormal card-panel" + this.props.color + " lighten-3"
+          "ParagraphNormal card-panel " + this.props.color + " lighten-3"
         }
         onClick={this.focus}
       >
@@ -71,7 +71,7 @@ export default class Paragraph extends React.Component {
   renderForm() {
     return (
       <div
-        className={"ParagraphForm card-panel" + this.props.color + " lighten-3"}
+        className={"ParagraphForm card-panel " + this.props.color + " lighten-3"}
       >
         <div className="input-field col s6">
           <input

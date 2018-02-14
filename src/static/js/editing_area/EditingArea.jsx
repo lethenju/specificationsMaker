@@ -46,29 +46,49 @@ export default class EditingArea extends React.Component {
   }
 
   renderActor() {
-    return <div className="EditingArea card-panel col s6">
+    return (
+      <div className="EditingArea card-panel col s6">
         <h2> Editing Area </h2>
         <div className="no_pad_margin row">
           <h3 className="no_pad_margin col s3 right-align">Actor :</h3>
-          <Editable className="no_pad_margin col s8" key={1} index={1} type="editable" rename={this.renameElement}>
+          <Editable
+            className="no_pad_margin col s8"
+            key={1}
+            index={1}
+            type="editable"
+            rename={this.renameElement}
+          >
             {this.state.object.name}
           </Editable>
         </div>
         <div className="divider" />
         <form>
           <label>
-            Actor's type
-            <select className="browser-default" value={this.state.object.direct || "direct"} onChange={this.save}>
+            Type
+            <select
+              className="browser-default"
+              value={this.state.object.direct || "direct"}
+              onChange={this.save}
+            >
               <option value="direct">Direct</option>
               <option value="indirect">Indirect</option>
             </select>
           </label>
-          <p> Description :</p>
           <div className="row">
-            <textarea className="col s12" name="textarea" ref="description" value={this.state.object.description || ""} onChange={this.save} />
+            <label>
+              Description
+              <textarea
+                className="col s12"
+                name="textarea"
+                ref="description"
+                value={this.state.object.description || ""}
+                onChange={this.save}
+              />
+            </label>
           </div>
         </form>
-      </div>;
+      </div>
+    );
   }
   renderUC() {
     return (
