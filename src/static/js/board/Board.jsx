@@ -18,9 +18,12 @@ export default class Board extends React.Component {
   }
   update(info) {
     if (info.type == "Actors") {
-      this.actorBoard.rename(info.index, info.object.name);
+      this.actorBoard.update(info.index, "name", info.object.name);
+      this.actorBoard.update(info.index, "direct", info.object.direct);
+      this.actorBoard.update(info.index, "description", info.object.description);
     } else {
-      this.UCBoard.rename(info.index, info.object.name);
+      this.UCBoard.update(info.index, "name", info.object.name);
+      this.UCBoard.update(info.index, "description", info.object.description);
     }
   }
   render() {

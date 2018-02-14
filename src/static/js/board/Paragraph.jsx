@@ -11,16 +11,18 @@ export default class Paragraph extends React.Component {
   }
 
   edit() {
-    this.setState({ editing: true });
+    const newState = this.state;
+    newState.editing = true;
+    this.setState(newState);
   }
   save() {
-    this.setState({ editing: false });
-    this.props.rename(this.props.index, this.refs.newText.value);
+    const newState = this.state;
+    newState.editing = false;
+    this.setState(newState);
+    this.props.update(this.props.index, "name", this.refs.newText.value);
     const info = {
       command: "show",
-      type: this.props.type,
       index: this.props.index,
-      name: this.refs.newText.value
     };
     this.props.showOnEditingArea(info);
   }
@@ -38,7 +40,7 @@ export default class Paragraph extends React.Component {
       command: "show",
       type: this.props.type,
       index: this.props.index,
-      name: null
+      name: null,
     };
     this.props.showOnEditingArea(info);
   }
