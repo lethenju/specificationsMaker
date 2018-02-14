@@ -125,10 +125,4 @@ export default class EditingArea extends React.Component {
     }
   }
 
-  noNull(value) {
-    if (value == null) {
-      return "";
-    }
-    return value;
-  }
 }
