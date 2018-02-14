@@ -7,6 +7,7 @@ export default class EditingArea extends React.Component {
     this.state = { render: false };
     this.renameElement = this.renameElement.bind(this);
     this.save = this.save.bind(this);
+    this.noNull = this.noNull.bind(this);
   }
   componentDidMount() {
     this.props.onRef(this);
@@ -16,21 +17,12 @@ export default class EditingArea extends React.Component {
   }
   update(info) {
     if (info.command == "show") {
-      if (info.type == "Actors") {
-        this.setState({
-          render: true,
-          type: info.type,
-          index: info.index,
-          object: info.object
-        });
-      } else if (info.type == "Use Cases") {
-        this.setState({
-          render: true,
-          type: info.type,
-          index: info.index,
-          object: info.object
-        });
-      }
+      this.setState({
+        render: true,
+        type: info.type,
+        index: info.index,
+        object: info.object
+      });
     } else {
       this.setState({ render: false });
     }
@@ -42,16 +34,31 @@ export default class EditingArea extends React.Component {
     this.setState(newState);
     this.props.updateToBoard(newState);
   }
-  save(){
+  save() {
+    const newState = this.state;
+    newState.object.description = this.refs.description.value;
 
+    if (this.state.type === "Actors") {
+      newState.object.direct = this.refs.isDirect.value;
+    }
+    this.setState(newState);
+    this.props.updateToBoard(newState);
   }
 
   renderActor() {
-    return <div className="EditingArea card-panel col s6">
+    console.log(this.state.object.description);
+    return (
+      <div className="EditingArea card-panel col s6">
         <h2> Editing Area </h2>
         <div className="no_pad_margin row">
           <h3 className="no_pad_margin col s3 right-align">Actor :</h3>
-          <Editable className="no_pad_margin col s8" key={1} index={1} type="editable" rename={this.renameElement}>
+          <Editable
+            className="no_pad_margin col s8"
+            key={1}
+            index={1}
+            type="editable"
+            rename={this.renameElement}
+          >
             {this.state.object.name}
           </Editable>
         </div>
@@ -60,21 +67,29 @@ export default class EditingArea extends React.Component {
           <p> Actor's type :</p>
           <label>
             Indirect
-            <input type="checkbox" ref="isDirect" defaultValue={this.state.object.direct} />
+            <input
+              type="checkbox"
+              ref="isDirect"
+              defaultValue={this.state.object.direct}
+              onChange={this.save}
+            />
             <span className="lever" />
             Direct
           </label>
         </div>
         <p> Description :</p>
         <div className="row">
-          <textarea className="col s12" name="textarea" ref="description" defaultValue={this.state.object.description}>
-            {this.state.object.description}
+          <textarea
+            className="col s12"
+            name="textarea"
+            ref="description"
+            value={this.state.object.description || ""}
+            onChange={this.save}
+          >
           </textarea>
         </div>
-        <button onClick={this.save} className="waves-effect waves-light btn">
-          Save
-        </button>
-      </div>;
+      </div>
+    );
   }
   renderUC() {
     return (
@@ -109,5 +124,12 @@ export default class EditingArea extends React.Component {
         </div>
       );
     }
+  }
+
+  noNull(value) {
+    if (value == null) {
+      return "";
+    }
+    return value;
   }
 }
