@@ -38,16 +38,20 @@ export default class EditingArea extends React.Component {
     this.props.updateToBoard(this.state.type, newState.index);
   }
   save(event) {
-    console.log("Save function");
     const newState = this.state;
-    newState.object[event.target.id] = this.refs[event.target.id].value;
     // if it is a select multiple array
-    if (newState.object[event.target.id].constructor === Array) {
-      newState.object[event.target.id] = [].slice
-        .call(event.target.selectedOptions)
-        .map(o => {
-          return o.value;
-        });
+    if (newState.object[event.target.id] != null) {
+      if (newState.object[event.target.id].constructor === Array) {
+        newState.object[event.target.id] = [].slice
+          .call(event.target.selectedOptions)
+          .map(o => {
+            return o.value;
+          });
+      } else {
+        newState.object[event.target.id] = this.refs[event.target.id].value;
+      }
+    } else {
+      newState.object[event.target.id] = this.refs[event.target.id].value;
     }
     this.setState(newState);
     let newData = this.props.fetchData()[this.state.type].data;
