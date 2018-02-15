@@ -4,7 +4,6 @@ import ItemsBoard from "./ItemsBoard";
 export default class Board extends React.Component {
   constructor(props) {
     super(props);
-    this.focusOnEditingArea = this.focusOnEditingArea.bind(this);
     this.update = this.update.bind(this);
   }
   componentDidMount() {
@@ -13,11 +12,8 @@ export default class Board extends React.Component {
   componentWillUnmount() {
     this.props.onRef(undefined);
   }
-  focusOnEditingArea(info) {
-    this.props.showOnEditingArea(info);
-  }
   update(info) {
-    if (info.type == "Actors") {
+    if (info.type == "actors") {
       this.actorBoard.update(info.index, "name", info.object.name);
       this.actorBoard.update(info.index, "direct", info.object.direct);
       this.actorBoard.update(
@@ -30,21 +26,24 @@ export default class Board extends React.Component {
       this.UCBoard.update(info.index, "description", info.object.description);
     }
   }
+
   render() {
     return (
       <div className="Board card-panel">
         <h2> Board</h2>
         <ItemsBoard
-          type="Actors"
+          type="actors"
           color="blue"
-          showOnEditingArea={this.focusOnEditingArea}
+          showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.actorBoard = ref)}
+          storeData={this.props.storeData}
         />
         <ItemsBoard
-          type="Use Cases"
+          type="UCs"
           color="teal"
-          showOnEditingArea={this.focusOnEditingArea}
+          showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.UCBoard = ref)}
+          storeData={this.props.storeData}
         />{" "}
       </div>
     );
