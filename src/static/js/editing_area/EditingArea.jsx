@@ -38,18 +38,18 @@ export default class EditingArea extends React.Component {
     this.props.updateToBoard(this.state.type, newState.index);
   }
   save(event) {
+    console.log("Save function");
     const newState = this.state;
-    newState.object.description = this.refs.description.value;
-    if (this.state.type === "actors") {
-      newState.object.direct = event.target.value;
-    } else if (this.state.type === "UCs") {
-      newState.object.mainActors = event.target.value;
-      newState.object.preconditions = this.refs.preconditions.value;
-      newState.object.minimalgaranties = this.refs.minimalgaranties.value;
-      newState.object.successgaranties = this.refs.successgaranties.value;
+    newState.object[event.target.id] = this.refs[event.target.id].value;
+    // if it is a select multiple array
+    if (newState.object[event.target.id].constructor === Array) {
+      newState.object[event.target.id] = [].slice
+        .call(event.target.selectedOptions)
+        .map(o => {
+          return o.value;
+        });
     }
     this.setState(newState);
-    
     let newData = this.props.fetchData()[this.state.type].data;
     newData[newState.index] = newState.object;
     this.props.storeData(this.state.type, newData);
@@ -79,6 +79,7 @@ export default class EditingArea extends React.Component {
             <select
               className="browser-default"
               value={this.state.object.direct || "direct"}
+              id="direct"
               onChange={this.save}
             >
               <option value="direct">Direct</option>
@@ -91,6 +92,7 @@ export default class EditingArea extends React.Component {
               <textarea
                 className="col s12"
                 name="textarea"
+                id="description"
                 ref="description"
                 value={this.state.object.description || ""}
                 onChange={this.save}
@@ -126,6 +128,7 @@ export default class EditingArea extends React.Component {
                 className="col s12"
                 name="textarea"
                 ref="description"
+                id="description"
                 value={this.state.object.description || ""}
                 onChange={this.save}
               />
@@ -136,10 +139,39 @@ export default class EditingArea extends React.Component {
             <label>
               Main Actors
               <select
+                multiple
+                id="mainActors"
                 className="browser-default"
                 value={
-                  this.state.object.mainActors ||
-                  (this.props.fetchData().actors.data.length != 0) ? this.props.fetchData().actors.data[0].name : "Create an actor first"
+                  this.state.object.mainActors.length != 0
+                    ? this.state.object.mainActors
+                    : this.props.fetchData().actors.data.length != 0
+                      ? []
+                      : ["Create an actor first"]
+                }
+                onChange={this.save}
+              >
+                {this.props
+                  .fetchData()
+                  .actors.data.map((object, i) => (
+                    <option key={i}>{object.name}</option>
+                  ))}
+              </select>
+            </label>
+          </div>
+          <div className="row">
+            <label>
+              Secondary Actors
+              <select
+                multiple
+                className="browser-default"
+                id="secondActors"
+                value={
+                  this.state.object.secondActors.length != 0
+                    ? this.state.object.secondActors
+                    : this.props.fetchData().actors.data.length != 0
+                      ? []
+                      : ["Create an actor first"]
                 }
                 onChange={this.save}
               >
@@ -157,6 +189,7 @@ export default class EditingArea extends React.Component {
               <textarea
                 className="col s12"
                 name="textarea"
+                id="preconditions"
                 ref="preconditions"
                 value={this.state.object.preconditions || ""}
                 onChange={this.save}
@@ -169,6 +202,7 @@ export default class EditingArea extends React.Component {
               <textarea
                 className="col s12"
                 name="textarea"
+                id="minimalgaranties"
                 ref="minimalgaranties"
                 value={this.state.object.minimalgaranties || ""}
                 onChange={this.save}
@@ -181,6 +215,7 @@ export default class EditingArea extends React.Component {
               <textarea
                 className="col s12"
                 name="textarea"
+                id="successgaranties"
                 ref="successgaranties"
                 value={this.state.object.successgaranties || ""}
                 onChange={this.save}

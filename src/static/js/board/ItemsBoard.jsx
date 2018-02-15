@@ -26,7 +26,8 @@ export default class extends React.Component {
         name: "New UC",
         description: null,
         preconditions: null,
-        mainActors: null,
+        mainActors: [],
+        secondActors: [],
         minimalgaranties: null,
         successgaranties: null
       });
