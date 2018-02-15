@@ -1,5 +1,6 @@
 import React from "react";
 import Paragraph from "./Paragraph";
+import {actors, useCases, actorsDisplay, useCasesDisplay} from "../StringAssets";
 
 export default class extends React.Component {
   constructor(props) {
@@ -18,10 +19,13 @@ export default class extends React.Component {
   }
   add() {
     let newPar = this.state.paragraphs;
-    if (this.props.type === "actors") {
-      newPar.push({ name: "New Actor", direct: "false", description: null });
-      
-    } else {
+    if (this.props.type === actors()) {
+      newPar.push({
+        name: "New Actor",
+        direct: "false",
+        description: null
+      });
+    } else if (this.props.type === useCases()){
       newPar.push({
         name: "New UC",
         description: null,
@@ -64,7 +68,7 @@ export default class extends React.Component {
 
   render() {
     return <div className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}>
-        <h2> {this.props.type} </h2>
+        <h2> {this.props.type === actors() ? actorsDisplay() : useCasesDisplay()} </h2>
         <div>
           {this.state.paragraphs.map((object, i) => (
             <Paragraph

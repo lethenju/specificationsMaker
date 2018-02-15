@@ -1,5 +1,6 @@
 import React from "react";
 import ItemsBoard from "./ItemsBoard";
+import {actors, useCases} from "../StringAssets";
 
 export default class Board extends React.Component {
   constructor(props) {
@@ -26,14 +27,14 @@ export default class Board extends React.Component {
       <div className="Board card-panel">
         <h2> Board</h2>
         <ItemsBoard
-          type="actors"
+          type=actors();
           color="blue"
           showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.board["actors"] = ref)}
           storeData={this.props.storeData}
         />
         <ItemsBoard
-          type="UCs"
+          type=useCases();
           color="teal"
           showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.board["UCs"] = ref)}
