@@ -15,14 +15,14 @@ export default class App extends React.Component {
     this.updateToBoard = this.updateToBoard.bind(this);
     this.storeData = this.storeData.bind(this);
     this.fetchData = this.fetchData.bind(this);
-    this.state = { actors: {data: null }, UCs: {data: null}};
+    this.state = { actors: { data: [] }, UCs: { data: [] } };
   }
 
   storeData(type, data) {
     let newState = this.state;
     newState[type].data = data;
     this.setState(newState);
-    console.log(this.state);
+    //console.log(this.state);
   }
   fetchData() {
     return this.state;
@@ -30,8 +30,8 @@ export default class App extends React.Component {
   showOnEditingArea(info) {
     this.editingArea.update(info);
   }
-  updateToBoard(info) {
-    this.specBoard.update(info);
+  updateToBoard(type, index) {
+    this.specBoard.update(type, index);
   }
   render() {
     return (
@@ -49,12 +49,14 @@ export default class App extends React.Component {
               showOnEditingArea={this.showOnEditingArea}
               onRef={ref => (this.specBoard = ref)}
               storeData={this.storeData}
+              fetchData={this.fetchData}
             />
           </div>
           <div className="col s8">
             <EditingArea
               updateToBoard={this.updateToBoard}
               onRef={ref => (this.editingArea = ref)}
+              storeData={this.storeData}
               fetchData={this.fetchData}
             />
           </div>

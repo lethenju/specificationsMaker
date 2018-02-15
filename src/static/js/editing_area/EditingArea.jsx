@@ -20,7 +20,7 @@ export default class EditingArea extends React.Component {
         render: true,
         type: info.type,
         index: info.index,
-        object: info.object
+        object: this.props.fetchData()[info.type].data[info.index]
       });
     } else {
       this.setState({ render: false });
@@ -31,7 +31,11 @@ export default class EditingArea extends React.Component {
     const newState = this.state;
     newState.object.name = newText;
     this.setState(newState);
-    this.props.updateToBoard(newState);
+
+    let newData = this.props.fetchData()[this.state.type].data;
+    newData[newState.index] = newState.object;
+    this.props.storeData(this.state.type, newData);
+    this.props.updateToBoard(this.state.type, newState.index);
   }
   save(event) {
     const newState = this.state;
@@ -45,7 +49,11 @@ export default class EditingArea extends React.Component {
       newState.object.successgaranties = this.refs.successgaranties.value;
     }
     this.setState(newState);
-    this.props.updateToBoard(newState);
+    
+    let newData = this.props.fetchData()[this.state.type].data;
+    newData[newState.index] = newState.object;
+    this.props.storeData(this.state.type, newData);
+    this.props.updateToBoard(this.state.type, newState.index);
   }
 
   renderActor() {
@@ -131,14 +139,14 @@ export default class EditingArea extends React.Component {
                 className="browser-default"
                 value={
                   this.state.object.mainActors ||
-                  this.props.fetchData().actors.data[0].name
+                  (this.props.fetchData().actors.data.length != 0) ? this.props.fetchData().actors.data[0].name : "Create an actor first"
                 }
                 onChange={this.save}
               >
                 {this.props
                   .fetchData()
                   .actors.data.map((object, i) => (
-                    <option value={object.name}>{object.name}</option>
+                    <option key={i}>{object.name}</option>
                   ))}
               </select>
             </label>
