@@ -7,6 +7,7 @@
 import React from "react";
 import Board from "./board/Board";
 import EditingArea from "./editing_area/EditingArea";
+import { actors, useCases } from "./StringAssets";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class App extends React.Component {
     this.updateToBoard = this.updateToBoard.bind(this);
     this.storeData = this.storeData.bind(this);
     this.fetchData = this.fetchData.bind(this);
-    this.state = { actors: { data: [] }, UCs: { data: [] } };
+    this.state = { [actors()]: { data: [] }, [useCases()]: { data: [] } };
   }
 
   storeData(type, data) {

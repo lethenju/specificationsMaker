@@ -1,6 +1,8 @@
 import React from "react";
 import Editable from "./Editable";
 import App from "../App";
+import { actors, useCases } from "../StringAssets";
+
 export default class EditingArea extends React.Component {
   constructor(props) {
     super(props);
@@ -232,9 +234,9 @@ export default class EditingArea extends React.Component {
   }
   render() {
     if (this.state.render) {
-      if (this.state.type == "actors") {
+      if (this.state.type == actors()) {
         return this.renderActor();
-      } else if (this.state.type == "UCs") {
+      } else if (this.state.type == useCases()) {
         return this.renderUC();
       }
     } else {
