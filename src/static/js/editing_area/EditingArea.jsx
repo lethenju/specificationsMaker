@@ -36,9 +36,13 @@ export default class EditingArea extends React.Component {
   save(event) {
     const newState = this.state;
     newState.object.description = this.refs.description.value;
-
     if (this.state.type === "Actors") {
       newState.object.direct = event.target.value;
+    } else if (this.state.type === "Use Cases") {
+      newState.object.preconditions = this.refs.preconditions.value;
+      newState.object.minimalgaranties = this.refs.minimalgaranties.value;
+      newState.object.successgaranties = this.refs.successgaranties.value;
+      
     }
     this.setState(newState);
     this.props.updateToBoard(newState);
@@ -90,23 +94,42 @@ export default class EditingArea extends React.Component {
     );
   }
   renderUC() {
-    return (
-      <div className="EditingArea card-panel col s8">
+    return <div className="EditingArea  col s8">
         <h2> Editing Area </h2>
         <div className="row" className="no_pad_margin">
           <h3 className="no_pad_margin col s3 right-align">Use case :</h3>
-          <Editable
-            className="no_pad_margin col s8"
-            key={1}
-            index={1}
-            type="editable"
-            rename={this.renameElement}
-          >
+          <Editable className="no_pad_margin col s8" key={1} index={1} type="editable" rename={this.renameElement}>
             {this.state.object.name}
           </Editable>
         </div>
-      </div>
-    );
+        <div className="divider" />
+        <form>
+          <div className="row">
+            <label>
+              Description
+              <textarea className="col s12" name="textarea" ref="description" value={this.state.object.description || ""} onChange={this.save} />
+            </label>
+          </div>
+          <div className="row">
+            <label>
+              Preconditions
+              <textarea className="col s12" name="textarea" ref="preconditions" value={this.state.object.preconditions || ""} onChange={this.save} />
+            </label>
+          </div>
+          <div className="row">
+            <label>
+              Minimal garanties
+              <textarea className="col s12" name="textarea" ref="minimalgaranties" value={this.state.object.minimalgaranties || ""} onChange={this.save} />
+            </label>
+          </div>
+          <div className="row">
+            <label>
+              Success garanties
+              <textarea className="col s12" name="textarea" ref="successgaranties" value={this.state.object.successgaranties || ""} onChange={this.save} />
+            </label>
+          </div>
+        </form>
+      </div>;
   }
   render() {
     if (this.state.render) {

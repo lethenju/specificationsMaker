@@ -6,6 +6,10 @@
 }
 .EditingArea {
   position: fixed;
+  overflow-y: auto;
+  top: 64px;
+  left: 10px;
+  bottom: 10px;
 }
 
 .btn {

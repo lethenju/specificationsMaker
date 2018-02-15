@@ -24,7 +24,10 @@ export default class extends React.Component {
     } else {
       newPar.push({
         name: "New UC",
-        description: null
+        description: null,
+        preconditions: null,
+        minimalgaranties: null,
+        successgaranties: null
       });
     }
     this.setState({ paragraphs: newPar });
