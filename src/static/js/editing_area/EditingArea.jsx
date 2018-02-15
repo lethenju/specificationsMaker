@@ -7,7 +7,6 @@ export default class EditingArea extends React.Component {
     this.state = { render: false };
     this.renameElement = this.renameElement.bind(this);
     this.save = this.save.bind(this);
-    this.noNull = this.noNull.bind(this);
   }
   componentDidMount() {
     this.props.onRef(this);
