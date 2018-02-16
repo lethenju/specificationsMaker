@@ -2,7 +2,7 @@ import React from "react";
 import Editable from "./Editable";
 import App from "../App";
 import { renderActor } from "./RenderActor";
-import { renderUC } from "./RenderUC";
+import { renderUC } from "./use_case/RenderUC";
 import { actors, useCases } from "../StringAssets";
 
 export default class EditingArea extends React.Component {

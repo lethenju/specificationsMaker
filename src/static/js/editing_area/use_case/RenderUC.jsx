@@ -1,8 +1,8 @@
 import React from "react";
-import Editable from "./Editable";
+import Editable from "../Editable";
 import Scenario from "./Scenario";
-import App from "../App";
-import { actors, useCases } from "../StringAssets";
+import App from "../../App";
+import { actors, useCases } from "../../StringAssets";
 export function renderUC(context) {
   return (
     <div className="EditingArea  col s8">
