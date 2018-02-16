@@ -1,5 +1,6 @@
 import React from "react";
 import Editable from "./Editable";
+import Scenario from "./Scenario";
 import App from "../App";
 import { actors, useCases } from "../StringAssets";
 export function renderUC(context) {
@@ -121,6 +122,7 @@ export function renderUC(context) {
             />
           </label>
         </div>
+        <Scenario/>
       </form>
     </div>
   );

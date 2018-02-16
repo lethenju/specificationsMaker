@@ -39,3 +39,7 @@ textarea {
   resize: vertical;
   font-size: 18px;
 }
+
+.whiteText {
+  color: white;
+} 
