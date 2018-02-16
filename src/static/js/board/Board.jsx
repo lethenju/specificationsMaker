@@ -6,7 +6,7 @@ export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
-    this.board = { actors: null, UCs: null };
+    this.board = { [actors()]: null, [useCases()]: null };
   }
   componentDidMount() {
     this.props.onRef(this);
@@ -30,14 +30,14 @@ export default class Board extends React.Component {
           type={actors()}
           color="blue"
           showOnEditingArea={this.props.showOnEditingArea}
-          onRef={ref => (this.board["actors"] = ref)}
+          onRef={ref => (this.board[actors()] = ref)}
           storeData={this.props.storeData}
         />
         <ItemsBoard
           type={useCases()}
           color="teal"
           showOnEditingArea={this.props.showOnEditingArea}
-          onRef={ref => (this.board["UCs"] = ref)}
+          onRef={ref => (this.board[useCases()] = ref)}
           storeData={this.props.storeData}
         />{" "}
       </div>
