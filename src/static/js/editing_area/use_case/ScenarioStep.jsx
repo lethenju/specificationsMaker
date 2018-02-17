@@ -19,9 +19,10 @@ export default class ScenarioStep extends React.Component {
   render() {
     return (
       <div className={"ScenarioStep card-panel red lighten-3"}>
-        <div className="input-field col s6">
-          <h4> {this.props.children.key}</h4>
+        <div className="ScenarioStep row">
+          <h4 className="col s2"> {this.props.children.key}</h4>
           <input
+            className="col s5"
             defaultValue={this.props.children.actor}
             id="Actor"
             ref="newText"
@@ -29,6 +30,7 @@ export default class ScenarioStep extends React.Component {
             onChange={this.save}
           />
           <input
+            className="col s5"
             defaultValue={this.props.children.action}
             id="Actor"
             ref="newText"
