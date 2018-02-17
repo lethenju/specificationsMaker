@@ -49,7 +49,10 @@ export default class Scenario extends React.Component {
             </ScenarioStep>
           ))}
         </div>
-        <button onClick={this.add} className="waves-effect waves-light btn">
+        <button
+          onClick={this.add}
+          className="waves-effect waves-light btn-flat"
+        >
           Add new
         </button>
       </div>

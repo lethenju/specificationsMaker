@@ -20,7 +20,6 @@ export function renderUC(context) {
         </Editable>
       </div>
       <div className="divider" />
-      <form>
         <div className="row">
           <label>
             Description
@@ -123,7 +122,6 @@ export function renderUC(context) {
           </label>
         </div>
         <Scenario/>
-      </form>
     </div>
   );
 }
