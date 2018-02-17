@@ -2,3 +2,4 @@ src/server/__pycache__/
 src/static/dist/
 src/static/node_modules/
 src/static/package-lock.json
+.vscode/
