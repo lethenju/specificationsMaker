@@ -4,6 +4,10 @@
 .UseCaseNormal .UseCaseForm {
   margin-bottom: 1%;
 }
+.Navbar {
+  position: fixed;
+  top: 0px;
+}
 .EditingArea {
   position: fixed;
   overflow-y: auto;

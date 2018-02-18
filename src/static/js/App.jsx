@@ -37,13 +37,15 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <nav>
-          <div className="nav-wrapper">
-            <a href="#" className="brand-logo">
-              Specification Maker
-            </a>
-          </div>
-        </nav>
+        <div className="navbar-fixed">
+          <nav>
+            <div className="nav-wrapper">
+              <a href="#" className="brand-logo">
+                Specification Maker
+              </a>
+            </div>
+          </nav>
+        </div>
         <div className="MainBoard row">
           <div className="col s4">
             <Board
