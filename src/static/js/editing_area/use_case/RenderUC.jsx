@@ -44,9 +44,7 @@ export function renderUC(context) {
             value={
               context.state.object.mainActors.length != 0
                 ? context.state.object.mainActors
-                : context.props.fetchData().actors.data.length != 0
-                  ? []
-                  : ["Create an actor first"]
+                : []
             }
             onChange={context.save}
           >
@@ -66,9 +64,7 @@ export function renderUC(context) {
             value={
               context.state.object.secondActors.length != 0
                 ? context.state.object.secondActors
-                : context.props.fetchData().actors.data.length != 0
-                  ? []
-                  : ["Create an actor first"]
+                : []
             }
             onChange={context.save}
           >
@@ -94,10 +90,9 @@ export function renderUC(context) {
         </label>
       </div>
       <div className="row">
-        <label>
+        <label className="col s6">
           Minimal garanties
           <textarea
-            className="col s12"
             name="textarea"
             id="minimalgaranties"
             ref="minimalgaranties"
@@ -105,12 +100,9 @@ export function renderUC(context) {
             onChange={context.save}
           />
         </label>
-      </div>
-      <div className="row">
-        <label>
+        <label className="col s6">
           Success garanties
           <textarea
-            className="col s12"
             name="textarea"
             id="successgaranties"
             ref="successgaranties"
