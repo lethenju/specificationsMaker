@@ -5,7 +5,7 @@ export default class ScenarioStep extends React.Component {
     super(props);
     this.save = this.save.bind(this);
     this.remove = this.remove.bind(this);
-    this.state = {actor: null}
+    this.state = { actor: null };
   }
   save(event) {
     this.props.update(this.props.index, "actor", this.refs.actor.value);
@@ -19,32 +19,35 @@ export default class ScenarioStep extends React.Component {
   }
   render() {
     return (
-      <div className={"ScenarioStep card-panel red lighten-3"}>
+      <div className={"ScenarioStep card-panel"}>
         <div className="ScenarioStep row">
           <h4 className="col s2"> {this.props.children.key}</h4>
-          <select
-            className="browser-default col s5"
-            value={
-              this.state.actor
-            }
-            id="Actor"
-            ref="actor"
-            onChange={this.save}
-          >
-            {this.props
-              .fetchData()
-              .actors.data.map((object, i) => (
-                <option key={i}>{object.name}</option>
-              ))}
-          </select>
-          <input
-            className="col s5"
-            defaultValue={this.props.children.action}
-            id="Action"
-            ref="action"
-            type="text"
-            onChange={this.save}
-          />
+          <label className="col s5">
+            Concerned actor
+            <select
+              className="browser-default"
+              value={this.state.actor}
+              id="Actor"
+              ref="actor"
+              onChange={this.save}
+            >
+              {this.props
+                .fetchData()
+                .actors.data.map((object, i) => (
+                  <option key={i}>{object.name}</option>
+                ))}
+            </select>
+          </label>
+          <label className="col s5">
+            Action
+            <input
+              defaultValue={this.props.children.action}
+              id="Action"
+              ref="action"
+              type="text"
+              onChange={this.save}
+            />
+          </label>
         </div>
         <button
           onClick={this.remove}
