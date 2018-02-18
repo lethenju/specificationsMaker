@@ -16,6 +16,7 @@ export default class App extends React.Component {
     this.updateToBoard = this.updateToBoard.bind(this);
     this.storeData = this.storeData.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.addUseCase = this.addUseCase.bind(this);
     this.state = { [actors()]: { data: [] }, [useCases()]: { data: [] } };
   }
 
@@ -33,6 +34,9 @@ export default class App extends React.Component {
   }
   updateToBoard(type, index) {
     this.specBoard.update(type, index);
+  }
+  addUseCase(name) {
+    this.specBoard.addUseCase(name);
   }
   render() {
     return (
@@ -61,6 +65,7 @@ export default class App extends React.Component {
               onRef={ref => (this.editingArea = ref)}
               storeData={this.storeData}
               fetchData={this.fetchData}
+              addUseCase={this.addUseCase}
             />
           </div>
         </div>

@@ -55,6 +55,7 @@ export default class Scenario extends React.Component {
                 remove={this.remove}
                 fetchData={this.props.fetchData}
                 actor={this.props.fetchScenario()[i].actor}
+                addUseCase={this.props.addUseCase}
               >
                 {object}
               </ScenarioStep>

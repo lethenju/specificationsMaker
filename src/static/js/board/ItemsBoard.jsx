@@ -1,6 +1,11 @@
 import React from "react";
 import Paragraph from "./Paragraph";
-import {actors, useCases, actorsDisplay, useCasesDisplay} from "../StringAssets";
+import {
+  actors,
+  useCases,
+  actorsDisplay,
+  useCasesDisplay
+} from "../StringAssets";
 
 export default class extends React.Component {
   constructor(props) {
@@ -17,6 +22,29 @@ export default class extends React.Component {
   componentWillUnmount() {
     this.props.onRef(undefined);
   }
+  addNamed(name) {
+    let newPar = this.state.paragraphs;
+    if (this.props.type === actors()) {
+      newPar.push({
+        name: name,
+        direct: "false",
+        description: null
+      });
+    } else if (this.props.type === useCases()) {
+      newPar.push({
+        name: name,
+        description: null,
+        preconditions: null,
+        mainActors: [],
+        secondActors: [],
+        minimalgaranties: null,
+        successgaranties: null,
+        scenario: []
+      });
+    }
+    this.props.storeData(this.props.type, newPar);
+    this.setState({ paragraphs: newPar });
+  }
   add() {
     let newPar = this.state.paragraphs;
     if (this.props.type === actors()) {
@@ -25,7 +53,7 @@ export default class extends React.Component {
         direct: "false",
         description: null
       });
-    } else if (this.props.type === useCases()){
+    } else if (this.props.type === useCases()) {
       newPar.push({
         name: "New UC",
         description: null,
@@ -39,7 +67,6 @@ export default class extends React.Component {
     }
     this.props.storeData(this.props.type, newPar);
     this.setState({ paragraphs: newPar });
-    
   }
 
   remove(i) {
@@ -62,14 +89,21 @@ export default class extends React.Component {
       type: this.props.type,
       index: info.index,
       object: this.state.paragraphs[info.index]
-    }
+    };
     this.props.showOnEditingArea(addedInfo);
   }
 
-
   render() {
-    return <div className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}>
-        <h2> {this.props.type === actors() ? actorsDisplay() : useCasesDisplay()} </h2>
+    return (
+      <div
+        className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}
+      >
+        <h2>
+          {" "}
+          {this.props.type === actors()
+            ? actorsDisplay()
+            : useCasesDisplay()}{" "}
+        </h2>
         <div>
           {this.state.paragraphs.map((object, i) => (
             <Paragraph
@@ -88,6 +122,7 @@ export default class extends React.Component {
         <button onClick={this.add} className="waves-effect waves-light btn">
           Add new
         </button>
-      </div>;
+      </div>
+    );
   }
 }

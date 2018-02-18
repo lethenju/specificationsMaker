@@ -77,6 +77,7 @@ export default class EditingArea extends React.Component {
     this.props.storeData(this.state.type, newData);
     this.props.updateToBoard(this.state.type, newState.index);
   }
+
   render() {
     if (this.state.render) {
       if (this.state.type == actors()) {

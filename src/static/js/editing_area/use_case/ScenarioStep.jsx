@@ -5,8 +5,9 @@ export default class ScenarioStep extends React.Component {
     super(props);
     this.save = this.save.bind(this);
     this.remove = this.remove.bind(this);
+    this.addUseCase = this.addUseCase.bind(this);
   }
-  save(event) {
+  save() {
     this.props.update(this.props.index, "actor", this.refs.actor.value);
     this.props.update(this.props.index, "action", this.refs.action.value);
   }
@@ -14,6 +15,19 @@ export default class ScenarioStep extends React.Component {
   remove() {
     if (window.confirm("Are you sure?")) {
       this.props.remove(this.props.index);
+    }
+  }
+  addUseCase() {
+    if (
+      confirm(
+        "Create a new Use Case named " +
+          this.refs.actor.value +
+          " " +
+          this.refs.action.value +
+          "?"
+      )
+    ) {
+      this.props.addUseCase(this.refs.actor.value+" "+this.refs.action.value);
     }
   }
   render() {
@@ -53,6 +67,12 @@ export default class ScenarioStep extends React.Component {
           className="waves-effect waves-light btn-flat"
         >
           Remove
+        </button>
+        <button
+          onClick={this.addUseCase}
+          className="waves-effect waves-light btn-flat"
+        >
+          Add use case
         </button>
       </div>
     );

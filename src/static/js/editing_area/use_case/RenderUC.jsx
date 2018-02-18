@@ -113,6 +113,7 @@ export function renderUC(context) {
         fetchData={context.props.fetchData}
         fetchScenario={context.fetchScenario}
         storeScenario={context.storeScenario}
+        addUseCase={context.props.addUseCase}
       />
     </div>
   );

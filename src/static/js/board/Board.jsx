@@ -1,11 +1,12 @@
 import React from "react";
 import ItemsBoard from "./ItemsBoard";
-import {actors, useCases} from "../StringAssets";
+import { actors, useCases } from "../StringAssets";
 
 export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.update = this.update.bind(this);
+    this.addUseCase = this.addUseCase.bind(this);
     this.board = { [actors()]: null, [useCases()]: null };
   }
   componentDidMount() {
@@ -20,6 +21,9 @@ export default class Board extends React.Component {
       "name",
       this.props.fetchData()[type].data[index].name
     );
+  }
+  addUseCase(name) {
+    this.board[useCases()].addNamed(name);
   }
 
   render() {
