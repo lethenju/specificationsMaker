@@ -10,8 +10,6 @@ export function renderActor(context) {
         <h3 className="no_pad_margin col s3 right-align">Actor :</h3>
         <Editable
           className="no_pad_margin col s8"
-          key={1}
-          index={1}
           type="editable"
           rename={context.renameElement}
         >
