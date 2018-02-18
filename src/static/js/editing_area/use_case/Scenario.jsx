@@ -34,6 +34,7 @@ export default class Scenario extends React.Component {
   }
 
   render() {
+    console.log(this.props.actors);
     return (
       <div id="scenario" className="card-panel red lighten-1">
         <h3 className="whiteText"> Scenario </h3>
@@ -44,7 +45,7 @@ export default class Scenario extends React.Component {
               index={i}
               update={this.update}
               remove={this.remove}
-              actors={this.props.actors}
+              fetchData={this.props.fetchData}
             >
               {object}
             </ScenarioStep>

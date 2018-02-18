@@ -43,7 +43,6 @@ export default class EditingArea extends React.Component {
   }
   save(event) {
     const newState = this.state;
-    console.log(this.refs);
 
     // if it is a select multiple array
     if (newState.object[event.target.id] != null) {

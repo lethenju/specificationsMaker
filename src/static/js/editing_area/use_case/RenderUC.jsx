@@ -120,13 +120,8 @@ export function renderUC(context) {
         </label>
       </div>
       <Scenario
-        actors={
-          context.state.object.mainActors.length != 0
-            ? context.state.object.mainActors
-            : context.props.fetchData().actors.data.length != 0
-              ? []
-              : ["Create an actor first"]
-        }
+        fetchData={context.props.fetchData}
+        storeData={context.props.storeData}
       />
     </div>
   );
