@@ -5,7 +5,6 @@ export default class ScenarioStep extends React.Component {
     super(props);
     this.save = this.save.bind(this);
     this.remove = this.remove.bind(this);
-    this.state = { actor: null };
   }
   save(event) {
     this.props.update(this.props.index, "actor", this.refs.actor.value);
@@ -26,7 +25,7 @@ export default class ScenarioStep extends React.Component {
             Concerned actor
             <select
               className="browser-default"
-              value={this.state.actor}
+              value={this.props.actor || ""}
               id="Actor"
               ref="actor"
               onChange={this.save}

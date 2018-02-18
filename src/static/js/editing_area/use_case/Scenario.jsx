@@ -17,6 +17,7 @@ export default class Scenario extends React.Component {
     });
     //this.props.storeData(this.props.type, newStep);
     this.setState({ steps: newSteps });
+    this.props.storeScenario(newSteps);
   }
 
   remove(i) {
@@ -27,10 +28,10 @@ export default class Scenario extends React.Component {
         step.key--;
       }
     });
-
     newSteps.splice(i, 1);
     //this.props.storeData(this.props.type, newStep);
-    this.setState({ paragraphs: newSteps });
+    this.setState({ steps: newSteps });
+    this.props.storeScenario(newSteps);
   }
 
   update(i, field, newText) {
@@ -52,6 +53,7 @@ export default class Scenario extends React.Component {
               update={this.update}
               remove={this.remove}
               fetchData={this.props.fetchData}
+              actor={this.props.fetchScenario()[i].actor}
             >
               {object}
             </ScenarioStep>

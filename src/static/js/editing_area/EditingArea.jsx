@@ -31,10 +31,6 @@ export default class EditingArea extends React.Component {
   }
   fetchScenario() {
     let newData = this.props.fetchData()[useCases()].data;
-
-    const newState = this.state;
-    newState.object.scenario = newData[this.state.index].scenario;
-    this.setState(newState);
     return newData[this.state.index].scenario;
   }
   update(info) {
