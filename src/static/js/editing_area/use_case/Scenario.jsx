@@ -21,6 +21,13 @@ export default class Scenario extends React.Component {
 
   remove(i) {
     let newSteps = this.state.steps;
+    
+    newSteps.map((step, j) => {
+      if (j > i) {
+        step.key--;
+      }
+    });
+
     newSteps.splice(i, 1);
     //this.props.storeData(this.props.type, newStep);
     this.setState({ paragraphs: newSteps });

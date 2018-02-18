@@ -20,7 +20,7 @@ export default class EditingArea extends React.Component {
   componentWillUnmount() {
     this.props.onRef(undefined);
   }
-  storeScenario(scenario){
+  storeScenario(scenario) {
     const newState = this.state;
     newState.object.scenario = scenario;
     this.setState(newState);
@@ -29,9 +29,13 @@ export default class EditingArea extends React.Component {
     newData[newState.index] = newState.object;
     this.props.storeData([useCases()], newData);
   }
-  fetchScenario(){
+  fetchScenario() {
     let newData = this.props.fetchData()[useCases()].data;
-    return newData[this.state.index].scenario
+
+    const newState = this.state;
+    newState.object.scenario = newData[this.state.index].scenario;
+    this.setState(newState);
+    return newData[this.state.index].scenario;
   }
   update(info) {
     if (info.command == "show") {
@@ -50,7 +54,6 @@ export default class EditingArea extends React.Component {
     const newState = this.state;
     newState.object.name = newText;
     this.setState(newState);
-
     let newData = this.props.fetchData()[this.state.type].data;
     newData[newState.index] = newState.object;
     this.props.storeData(this.state.type, newData);
@@ -58,7 +61,6 @@ export default class EditingArea extends React.Component {
   }
   save(event) {
     const newState = this.state;
-
     // if it is a select multiple array
     if (newState.object[event.target.id] != null) {
       if (newState.object[event.target.id].constructor === Array) {
