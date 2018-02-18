@@ -35,7 +35,7 @@ export default class Paragraph extends React.Component {
       this.props.showOnEditingArea(info);
     }
   }
-  focus() {
+  focus(event) {
     const info = {
       command: "show",
       type: this.props.type,
@@ -50,9 +50,8 @@ export default class Paragraph extends React.Component {
         className={
           "ParagraphNormal card-panel " + this.props.color + " lighten-3"
         }
-        onClick={this.focus}
       >
-        <h3>{this.props.children}</h3>
+        <h3 onClick={this.focus}>{this.props.children}</h3>
         <button
           onClick={this.edit}
           className="waves-effect waves-light btn-flat"
@@ -71,7 +70,9 @@ export default class Paragraph extends React.Component {
   renderForm() {
     return (
       <div
-        className={"ParagraphForm card-panel " + this.props.color + " lighten-3"}
+        className={
+          "ParagraphForm card-panel " + this.props.color + " lighten-3"
+        }
       >
         <div className="input-field col s6">
           <input
