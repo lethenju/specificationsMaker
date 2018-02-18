@@ -113,7 +113,8 @@ export function renderUC(context) {
       </div>
       <Scenario
         fetchData={context.props.fetchData}
-        storeData={context.props.storeData}
+        fetchScenario={context.fetchScenario}
+        storeScenario={context.storeScenario}
       />
     </div>
   );

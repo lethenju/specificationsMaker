@@ -3,7 +3,7 @@ import ScenarioStep from "./ScenarioStep";
 export default class Scenario extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { steps: [] };
+    this.state = { steps: this.props.fetchScenario() };
     this.remove = this.remove.bind(this);
     this.update = this.update.bind(this);
     this.add = this.add.bind(this);
@@ -29,12 +29,11 @@ export default class Scenario extends React.Component {
   update(i, field, newText) {
     let newSteps = this.state.steps;
     newSteps[i][field] = newText;
-    //this.props.storeData(this.props.type, newPar);
     this.setState({ steps: newSteps });
+    this.props.storeScenario(newSteps);
   }
 
   render() {
-    console.log(this.props.actors);
     return (
       <div id="scenario" className="card-panel red lighten-1">
         <h3 className="whiteText"> Scenario </h3>

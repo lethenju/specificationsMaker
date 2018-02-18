@@ -33,7 +33,8 @@ export default class extends React.Component {
         mainActors: [],
         secondActors: [],
         minimalgaranties: null,
-        successgaranties: null
+        successgaranties: null,
+        scenario: []
       });
     }
     this.props.storeData(this.props.type, newPar);

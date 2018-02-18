@@ -11,12 +11,27 @@ export default class EditingArea extends React.Component {
     this.state = { render: false };
     this.renameElement = this.renameElement.bind(this);
     this.save = this.save.bind(this);
+    this.fetchScenario = this.fetchScenario.bind(this);
+    this.storeScenario = this.storeScenario.bind(this);
   }
   componentDidMount() {
     this.props.onRef(this);
   }
   componentWillUnmount() {
     this.props.onRef(undefined);
+  }
+  storeScenario(scenario){
+    const newState = this.state;
+    newState.object.scenario = scenario;
+    this.setState(newState);
+
+    let newData = this.props.fetchData()[useCases()].data;
+    newData[newState.index] = newState.object;
+    this.props.storeData([useCases()], newData);
+  }
+  fetchScenario(){
+    let newData = this.props.fetchData()[useCases()].data;
+    return newData[this.state.index].scenario
   }
   update(info) {
     if (info.command == "show") {
