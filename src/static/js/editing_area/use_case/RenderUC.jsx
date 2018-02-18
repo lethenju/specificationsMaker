@@ -20,108 +20,114 @@ export function renderUC(context) {
         </Editable>
       </div>
       <div className="divider" />
-        <div className="row">
-          <label>
-            Description
-            <textarea
-              className="col s12"
-              name="textarea"
-              ref="description"
-              id="description"
-              value={context.state.object.description || ""}
-              onChange={context.save}
-            />
-          </label>
-        </div>
+      <div className="row">
+        <label>
+          Description
+          <textarea
+            className="col s12"
+            name="textarea"
+            ref="description"
+            id="description"
+            value={context.state.object.description || ""}
+            onChange={context.save}
+          />
+        </label>
+      </div>
 
-        <div className="row">
-          <label>
-            Main Actors
-            <select
-              multiple
-              id="mainActors"
-              className="browser-default"
-              value={
-                context.state.object.mainActors.length != 0
-                  ? context.state.object.mainActors
-                  : context.props.fetchData().actors.data.length != 0
-                    ? []
-                    : ["Create an actor first"]
-              }
-              onChange={context.save}
-            >
-              {context.props
-                .fetchData()
-                .actors.data.map((object, i) => (
-                  <option key={i}>{object.name}</option>
-                ))}
-            </select>
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Secondary Actors
-            <select
-              multiple
-              className="browser-default"
-              id="secondActors"
-              value={
-                context.state.object.secondActors.length != 0
-                  ? context.state.object.secondActors
-                  : context.props.fetchData().actors.data.length != 0
-                    ? []
-                    : ["Create an actor first"]
-              }
-              onChange={context.save}
-            >
-              {context.props
-                .fetchData()
-                .actors.data.map((object, i) => (
-                  <option key={i}>{object.name}</option>
-                ))}
-            </select>
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Preconditions
-            <textarea
-              className="col s12"
-              name="textarea"
-              id="preconditions"
-              ref="preconditions"
-              value={context.state.object.preconditions || ""}
-              onChange={context.save}
-            />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Minimal garanties
-            <textarea
-              className="col s12"
-              name="textarea"
-              id="minimalgaranties"
-              ref="minimalgaranties"
-              value={context.state.object.minimalgaranties || ""}
-              onChange={context.save}
-            />
-          </label>
-        </div>
-        <div className="row">
-          <label>
-            Success garanties
-            <textarea
-              className="col s12"
-              name="textarea"
-              id="successgaranties"
-              ref="successgaranties"
-              value={context.state.object.successgaranties || ""}
-              onChange={context.save}
-            />
-          </label>
-        </div>
-        <Scenario/>
+      <div className="row">
+        <label className="col s6">
+          Main Actors
+          <select
+            multiple
+            id="mainActors"
+            className="browser-default"
+            value={
+              context.state.object.mainActors.length != 0
+                ? context.state.object.mainActors
+                : context.props.fetchData().actors.data.length != 0
+                  ? []
+                  : ["Create an actor first"]
+            }
+            onChange={context.save}
+          >
+            {context.props
+              .fetchData()
+              .actors.data.map((object, i) => (
+                <option key={i}>{object.name}</option>
+              ))}
+          </select>
+        </label>
+        <label className="col s6">
+          Secondary Actors
+          <select
+            multiple
+            className="browser-default"
+            id="secondActors"
+            value={
+              context.state.object.secondActors.length != 0
+                ? context.state.object.secondActors
+                : context.props.fetchData().actors.data.length != 0
+                  ? []
+                  : ["Create an actor first"]
+            }
+            onChange={context.save}
+          >
+            {context.props
+              .fetchData()
+              .actors.data.map((object, i) => (
+                <option key={i}>{object.name}</option>
+              ))}
+          </select>
+        </label>
+      </div>
+      <div className="row">
+        <label>
+          Preconditions
+          <textarea
+            className="col s12"
+            name="textarea"
+            id="preconditions"
+            ref="preconditions"
+            value={context.state.object.preconditions || ""}
+            onChange={context.save}
+          />
+        </label>
+      </div>
+      <div className="row">
+        <label>
+          Minimal garanties
+          <textarea
+            className="col s12"
+            name="textarea"
+            id="minimalgaranties"
+            ref="minimalgaranties"
+            value={context.state.object.minimalgaranties || ""}
+            onChange={context.save}
+          />
+        </label>
+      </div>
+      <div className="row">
+        <label>
+          Success garanties
+          <textarea
+            className="col s12"
+            name="textarea"
+            id="successgaranties"
+            ref="successgaranties"
+            value={context.state.object.successgaranties || ""}
+            onChange={context.save}
+          />
+        </label>
+      </div>
+      <Scenario
+        actors={
+          context.state.object.mainActors.length != 0
+            ? context.state.object.mainActors
+            : context.props.fetchData().actors.data.length != 0
+              ? []
+              : ["Create an actor first"]
+        }
+      />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default class ScenarioStep extends React.Component {
     this.save = this.save.bind(this);
     this.remove = this.remove.bind(this);
   }
-  save() {
+  save(event) {
     this.props.update(this.props.index, "actor", this.refs.actor.value);
     this.props.update(this.props.index, "action", this.refs.action.value);
   }
@@ -21,19 +21,19 @@ export default class ScenarioStep extends React.Component {
       <div className={"ScenarioStep card-panel red lighten-3"}>
         <div className="ScenarioStep row">
           <h4 className="col s2"> {this.props.children.key}</h4>
-          <input
-            className="col s5"
-            defaultValue={this.props.children.actor}
+          <select
+            multiple
+            className="browser-default col s5"
+            value={this.props.actors}
             id="Actor"
-            ref="newText"
-            type="text"
+            ref="actor"
             onChange={this.save}
           />
           <input
             className="col s5"
             defaultValue={this.props.children.action}
-            id="Actor"
-            ref="newText"
+            id="Action"
+            ref="action"
             type="text"
             onChange={this.save}
           />

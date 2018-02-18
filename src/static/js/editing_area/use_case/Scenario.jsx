@@ -44,6 +44,7 @@ export default class Scenario extends React.Component {
               index={i}
               update={this.update}
               remove={this.remove}
+              actors={this.props.actors}
             >
               {object}
             </ScenarioStep>
