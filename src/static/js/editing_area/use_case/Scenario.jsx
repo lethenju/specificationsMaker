@@ -42,6 +42,7 @@ export default class Scenario extends React.Component {
   }
 
   render() {
+    console.log(this.props.fetchScenario());
     return <div id="scenario" className="card-panel red lighten-1">
         <h3 className="whiteText"> Scenario </h3>
         <div>
@@ -49,12 +50,10 @@ export default class Scenario extends React.Component {
             .fetchScenario()
             .map((object, i) => (
               <ScenarioStep
-                key={i}
                 index={i}
                 update={this.update}
                 remove={this.remove}
                 fetchData={this.props.fetchData}
-                actor={this.props.fetchScenario()[i].actor}
                 addUseCase={this.props.addUseCase}
               >
                 {object}

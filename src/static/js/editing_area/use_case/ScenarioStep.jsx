@@ -39,16 +39,13 @@ export default class ScenarioStep extends React.Component {
             Concerned actor
             <select
               className="browser-default"
-              value={this.props.actor || ""}
+              value={this.props.children.actor || ""}
               id="Actor"
               ref="actor"
               onChange={this.save}
             >
               {this.props
-                .fetchData()
-                .actors.data.map((object, i) => (
-                  <option key={i}>{object.name}</option>
-                ))}
+                .actor}
             </select>
           </label>
           <label className="col s5">
