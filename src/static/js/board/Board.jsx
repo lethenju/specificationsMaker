@@ -30,6 +30,7 @@ export default class Board extends React.Component {
     return (
       <div className="Board card-panel">
         <h2> Board</h2>
+        
         <ItemsBoard
           type={actors()}
           color="blue"
