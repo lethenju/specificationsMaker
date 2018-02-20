@@ -30,16 +30,26 @@ export default class Board extends React.Component {
     return (
       <div className="Board card-panel">
         <h2> Board</h2>
-        
         <ItemsBoard
-          type={actors()}
-          color="blue"
+          type="Introduction"
+          isAlone={true}
+          color="yellow"
           showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.board[actors()] = ref)}
           storeData={this.props.storeData}
         />
         <ItemsBoard
+          type={actors()}
+          isAlone={false}
+          color="blue"
+          showOnEditingArea={this.props.showOnEditingArea}
+          onRef={ref => (this.board[actors()] = ref)}
+          storeData={this.props.storeData}
+        />
+        isAlone={true}
+        <ItemsBoard
           type={useCases()}
+          isAlone={false}
           color="teal"
           showOnEditingArea={this.props.showOnEditingArea}
           onRef={ref => (this.board[useCases()] = ref)}

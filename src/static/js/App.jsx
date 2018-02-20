@@ -17,14 +17,19 @@ export default class App extends React.Component {
     this.storeData = this.storeData.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.addUseCase = this.addUseCase.bind(this);
-    this.state = { [actors()]: { data: [] }, [useCases()]: { data: [] } };
+    this.state = {
+      Introduction: {data: []},
+      [actors()]: { data: [] },
+      [useCases()]: { data: [] },
+      Conclusion: {data: []}
+    };
   }
 
   storeData(type, data) {
     let newState = this.state;
+    console.log(type, data, newState);
     newState[type].data = data;
     this.setState(newState);
-    //console.log(this.state);
   }
   fetchData() {
     return this.state;

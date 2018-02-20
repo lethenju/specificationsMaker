@@ -15,6 +15,9 @@ export default class extends React.Component {
     this.update = this.update.bind(this);
     this.focus = this.focus.bind(this);
     this.add = this.add.bind(this);
+    if (this.props.isAlone) {
+      this.addNamed(this.props.type);
+    }
   }
   componentDidMount() {
     this.props.onRef(this);
@@ -25,11 +28,7 @@ export default class extends React.Component {
   addNamed(name) {
     let newPar = this.state.paragraphs;
     if (this.props.type === actors()) {
-      newPar.push({
-        name: name,
-        direct: "false",
-        description: null
-      });
+      newPar.push({ name: name, direct: "false", description: null });
     } else if (this.props.type === useCases()) {
       newPar.push({
         name: name,
@@ -41,6 +40,14 @@ export default class extends React.Component {
         successgaranties: null,
         scenario: []
       });
+    } else if (name === "Introduction") {
+      newPar.push({
+        name: name
+        // TODO Add other parts proper to introduction
+      });
+    } else if (name === "Conclusion") {
+      newPar.push({ name: name });
+      // TODO Add other parts proper to introduction
     }
     this.props.storeData(this.props.type, newPar);
     this.setState({ paragraphs: newPar });
@@ -94,35 +101,59 @@ export default class extends React.Component {
   }
 
   render() {
-    return (
-      <div
-        className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}
-      >
-        <h2>
-          {" "}
-          {this.props.type === actors()
-            ? actorsDisplay()
-            : useCasesDisplay()}{" "}
-        </h2>
-        <div>
-          {this.state.paragraphs.map((object, i) => (
+    if (this.props.isAlone) {
+      return (
+        <div
+          className={
+            "ActorsBoard card-panel " + this.props.color + " lighten-4"
+          }
+        >
+          <div>
             <Paragraph
-              key={i}
-              index={i}
+              key={1}
+              index={1}
               type={this.props.type}
               update={this.update}
-              remove={this.remove}
               color={this.props.color}
               showOnEditingArea={this.focus}
             >
-              {object.name}
+              {this.state.paragraphs[0].name}
             </Paragraph>
-          ))}
+          </div>
         </div>
-        <button onClick={this.add} className="waves-effect waves-light btn">
-          Add new
-        </button>
-      </div>
-    );
+      );
+    } else
+      return (
+        <div
+          className={
+            "ActorsBoard card-panel " + this.props.color + " lighten-4"
+          }
+        >
+          <h2>
+            {" "}
+            {this.props.type === actors()
+              ? actorsDisplay()
+              : useCasesDisplay()}{" "}
+          </h2>
+          <div>
+            {this.state.paragraphs.map((object, i) => (
+              <Paragraph
+                key={i}
+                index={i}
+                type={this.props.type}
+                update={this.update}
+                remove={this.remove}
+                color={this.props.color}
+                showOnEditingArea={this.focus}
+              >
+                {object.name}
+              </Paragraph>
+            ))}
+          </div>
+          <button onClick={this.add} className="waves-effect waves-light btn">
+            Add new
+          </button>
+        </div>
+      );
   }
 }
