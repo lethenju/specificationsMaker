@@ -11,9 +11,9 @@ It has been created for helping me understanding react, and therefore will likel
 
 | Functionalities                     | Implemented |
 | ------------------------------------ | ----------- |
-| **Specification making**             | 0%          |
-| Website layout                       | 50 %        |
-| Create actors and use cases          | 15%         |
+| **Specification making**             | 20%          |
+| Website layout                       | 75%        |
+| Create actors and use cases          | 60%         |
 | Create Introduction, Conclusion      | 0%          |
 | Create custom paragraphs             | 0%          |
 | Reorder parts by drag n drop         | 0%          |
