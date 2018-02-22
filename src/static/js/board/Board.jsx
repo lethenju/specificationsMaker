@@ -46,7 +46,6 @@ export default class Board extends React.Component {
           onRef={ref => (this.board[actors()] = ref)}
           storeData={this.props.storeData}
         />
-        isAlone={true}
         <ItemsBoard
           type={useCases()}
           isAlone={false}

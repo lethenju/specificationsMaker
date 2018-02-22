@@ -3,7 +3,7 @@ import React from "react";
 export default class Paragraph extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editing: true };
+    this.state = { editing: this.props.editing };
     this.edit = this.edit.bind(this);
     this.save = this.save.bind(this);
     this.focus = this.focus.bind(this);

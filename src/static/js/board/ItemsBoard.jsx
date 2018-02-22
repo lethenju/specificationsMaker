@@ -110,12 +110,13 @@ export default class extends React.Component {
         >
           <div>
             <Paragraph
-              key={1}
-              index={1}
+              key={0}
+              index={0}
               type={this.props.type}
               update={this.update}
               color={this.props.color}
               showOnEditingArea={this.focus}
+              editing={false}
             >
               {this.state.paragraphs[0].name}
             </Paragraph>
@@ -123,12 +124,7 @@ export default class extends React.Component {
         </div>
       );
     } else
-      return (
-        <div
-          className={
-            "ActorsBoard card-panel " + this.props.color + " lighten-4"
-          }
-        >
+      return <div className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}>
           <h2>
             {" "}
             {this.props.type === actors()
@@ -145,6 +141,7 @@ export default class extends React.Component {
                 remove={this.remove}
                 color={this.props.color}
                 showOnEditingArea={this.focus}
+                editing={true}
               >
                 {object.name}
               </Paragraph>
@@ -153,7 +150,6 @@ export default class extends React.Component {
           <button onClick={this.add} className="waves-effect waves-light btn">
             Add new
           </button>
-        </div>
-      );
+        </div>;
   }
 }

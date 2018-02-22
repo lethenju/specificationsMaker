@@ -27,7 +27,6 @@ export default class App extends React.Component {
 
   storeData(type, data) {
     let newState = this.state;
-    console.log(type, data, newState);
     newState[type].data = data;
     this.setState(newState);
   }

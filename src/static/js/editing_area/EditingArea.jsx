@@ -84,6 +84,10 @@ export default class EditingArea extends React.Component {
         return renderActor(this);
       } else if (this.state.type == useCases()) {
         return renderUC(this);
+      } else {
+        return <div className="EditingArea card-panel col s8">
+            <h2> Editing Area </h2>
+          </div>;
       }
     } else {
       return (
