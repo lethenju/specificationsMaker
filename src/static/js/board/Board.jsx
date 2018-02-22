@@ -35,7 +35,6 @@ export default class Board extends React.Component {
           isAlone={true}
           color="yellow"
           showOnEditingArea={this.props.showOnEditingArea}
-          onRef={ref => (this.board[actors()] = ref)}
           storeData={this.props.storeData}
         />
         <ItemsBoard
@@ -54,6 +53,13 @@ export default class Board extends React.Component {
           onRef={ref => (this.board[useCases()] = ref)}
           storeData={this.props.storeData}
         />{" "}
+        <ItemsBoard
+          type="Conclusion"
+          isAlone={true}
+          color="red"
+          showOnEditingArea={this.props.showOnEditingArea}
+          storeData={this.props.storeData}
+        />
       </div>
     );
   }

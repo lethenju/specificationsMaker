@@ -20,10 +20,14 @@ export default class extends React.Component {
     }
   }
   componentDidMount() {
-    this.props.onRef(this);
+    if (!this.props.isAlone) {
+      this.props.onRef(this);
+    }
   }
   componentWillUnmount() {
-    this.props.onRef(undefined);
+    if (!this.props.isAlone) {
+      this.props.onRef(undefined);
+    }
   }
   addNamed(name) {
     let newPar = this.state.paragraphs;
@@ -124,7 +128,12 @@ export default class extends React.Component {
         </div>
       );
     } else
-      return <div className={"ActorsBoard card-panel " + this.props.color + " lighten-4"}>
+      return (
+        <div
+          className={
+            "ActorsBoard card-panel " + this.props.color + " lighten-4"
+          }
+        >
           <h2>
             {" "}
             {this.props.type === actors()
@@ -150,6 +159,7 @@ export default class extends React.Component {
           <button onClick={this.add} className="waves-effect waves-light btn">
             Add new
           </button>
-        </div>;
+        </div>
+      );
   }
 }
